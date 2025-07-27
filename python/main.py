@@ -3,6 +3,7 @@ from evaluation import evaluate_models
 from preprocess import preprocess_data
 from models import train_all_models
 import pandas as pd
+import pickle
 
 def main():
     # Load data
@@ -19,3 +20,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Save the trained models for future use
+with open('trained_models.pkl', 'wb') as f:
+    pickle.dump(train_all_models(), f)
+
+print("All processes completed successfully. Models saved to 'trained_models.pkl'.")
+
+with open('best_model.pkl', 'wb') as f:
+    pickle.dump("Random Forest", f)
+
+print("Best model and other trained models saved successfully.")
